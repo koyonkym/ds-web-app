@@ -29,7 +29,7 @@ function Form() {
         form_data.append("7", form.diabetes_pedigree);
         form_data.append("8", form.age);
 
-        fetch('https://dsmodeldeployment3.herokuapp.com/predict', {
+        fetch('https://dsmodeldeployment.herokuapp.com/predict', {
             method: 'POST',
             body: form_data
         })
