@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Form.css';
 
 function Form() {
     const [form, setForm] = useState({
@@ -76,7 +77,7 @@ function Form() {
             <button type="submit" disabled={loading}>{loading ? "Predicting Result..." : "Submit Form"}</button>
             {result && <span onClick={handleClear}>Clear Prediction</span>}
 
-            {result && <dev dangerouslySetInnerHTML={{ __html: result }}/>}
+            {result && <dev dangerouslySetInnerHTML={{ __html: result }} className="result" />}
         </form>
     );
 }

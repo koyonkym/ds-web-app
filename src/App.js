@@ -5,10 +5,9 @@ import From from './Form'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <main className="App-main">
         <From />
-      </header>
+      </main>
     </div>
   );
 }
