@@ -14,8 +14,21 @@ function Form() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Form submitted");
-        console.log(form);
+        const form_data = new FormData();
+        form_data.append("1", form.pregnancies);
+        form_data.append("2", form.glucose);
+        form_data.append("3", form.blood_presure);
+        form_data.append("4", form.skin_thickness);
+        form_data.append("5", form.inslulin_level);
+        form_data.append("6", form.bmi);
+        form_data.append("7", form.diabetes_pedigree);
+        form_data.append("8", form.age);
+        
+        fetch('https://dsmodeldeployment3.herokuapp.com/predict', {
+            method: 'POST',
+            body: form_data
+        })
+            .then(response => console.log(response))
     };
 
     const onChange = (event) => {
@@ -28,7 +41,7 @@ function Form() {
     return (
         <form onSubmit={handleSubmit}>
             <h4>Diabetes Prediction Model</h4>
-            <p>Example to Predir Probability of Diabetes</p>
+            <p>Example to Predict Probability of Diabetes</p>
             <input type="number" name="pregnancies" onChange={onChange} placeholder="Number of pregnancies" />
             <input type="number" name="glucose" onChange={onChange} placeholder="Glucose level in Sugar" />
             <input type="number" name="blood_presure" onChange={onChange} placeholder="Blood Presure" />
