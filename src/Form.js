@@ -11,6 +11,9 @@ function Form() {
         diabetes_pedigree: "",
         age: ""
     });
+
+    const [result, setResult] = useState("");
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -23,12 +26,15 @@ function Form() {
         form_data.append("6", form.bmi);
         form_data.append("7", form.diabetes_pedigree);
         form_data.append("8", form.age);
-        
+
         fetch('https://dsmodeldeployment3.herokuapp.com/predict', {
             method: 'POST',
             body: form_data
         })
-            .then(response => console.log(response))
+            .then(response => response.text())
+            .then(html => {
+                setResult(html);
+            })
     };
 
     const onChange = (event) => {
@@ -51,6 +57,8 @@ function Form() {
             <input type="number" name="diabetes_pedigree" onChange={onChange} placeholder="Diabetes pedigree Function" />
             <input type="number" name="age" onChange={onChange} placeholder="Age" />
             <button type="submit">Submit Form</button>
+
+            {result && <dev dangerouslySetInnerHTML={{ __html: result }}/>}
         </form>
     );
 }
