@@ -12,6 +12,7 @@ function Form() {
         age: ""
     });
 
+    const [loading, setLoading] = useState(false);
     const [result, setResult] = useState("");
 
     const handleSubmit = (event) => {
@@ -34,6 +35,7 @@ function Form() {
             .then(response => response.text())
             .then(html => {
                 setResult(html);
+                setLoading(false);
             })
     };
 
@@ -56,7 +58,7 @@ function Form() {
             <input type="number" name="bmi" onChange={onChange} placeholder="Body Mass Index (BMI)" />
             <input type="number" name="diabetes_pedigree" onChange={onChange} placeholder="Diabetes pedigree Function" />
             <input type="number" name="age" onChange={onChange} placeholder="Age" />
-            <button type="submit">Submit Form</button>
+            <button type="submit" disabled={loading}>{loading ? "Predicting Result..." : "Submit Form"}</button>
 
             {result && <dev dangerouslySetInnerHTML={{ __html: result }}/>}
         </form>
