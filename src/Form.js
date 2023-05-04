@@ -69,7 +69,7 @@ function Form() {
             <input type="number" name="glucose" value={form.glucose} onChange={onChange} placeholder="Glucose level in Sugar" />
             <input type="number" name="blood_presure" value={form.blood_presure} onChange={onChange} placeholder="Blood Presure" />
             <input type="number" name="skin_thickness" value={form.skin_thickness} onChange={onChange} placeholder="Skin Thickness" />
-            <input type="number" name="inslulin_level" value={form.insulin_level} onChange={onChange} placeholder="Insulin Level" />
+            <input type="number" name="inslulin_level" value={form.inslulin_level} onChange={onChange} placeholder="Insulin Level" />
             <input type="number" name="bmi" value={form.bmi} onChange={onChange} placeholder="Body Mass Index (BMI)" />
             <input type="number" name="diabetes_pedigree" value={form.diabetes_pedigree} onChange={onChange} placeholder="Diabetes pedigree Function" />
             <input type="number" name="age" value={form.age} onChange={onChange} placeholder="Age" />
